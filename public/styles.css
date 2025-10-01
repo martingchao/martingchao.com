@@ -45,6 +45,27 @@ ul {
   margin-block-end: 1em;
 }
 
+/* Discrete home navigation */
+.home-nav {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1rem 1rem 0;
+  text-align: left;
+}
+
+.home-nav a {
+  color: #666;
+  text-decoration: none;
+  font-size: 1.2em;
+  font-weight: bold;
+  transition: color 0.2s ease;
+  display: inline-block;
+}
+
+.home-nav a:hover {
+  color: #333;
+}
+
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
