@@ -35,7 +35,7 @@ layout: ../layouts/Layout.astro
 - Brazilian Champion 420 Class U19 (2017)
 - Champion - São Paulo State Optimist Championship (2015)
 
-Also represented the Brazilian National team in many international championships
+Also represented the Brazilian national team in many international championships
 
 **Youtube**
 - Silver Play button: 100 thousand subscribers on "Chao We Play?" channel
