@@ -1,12 +1,35 @@
 ---
-title: "Home"
+title: "Ideas & Thoughts"
 layout: ../layouts/Layout.astro
 ---
 
-## Ideas and thoughts
-- I write a newsletter on substack: [martinchao.substack.com](https://martinchao.substack.com/)
-- And also record videos for youtube: [youtube.com/@martingchao](https://www.youtube.com/@martingchao)
+# Ideas & Thoughts
 
-My content is mainly about business, tech, and product.
+I share my thinking through writing and video content.
 
-I also enjoy reflecting on how we can live a better life through the lens of philosophy.
+---
+
+## Newsletter
+
+I write a newsletter on Substack where I explore topics in depth.
+
+[Read on Substack](https://martinchao.substack.com/)
+
+---
+
+## YouTube
+
+I also create video content sharing insights and stories.
+
+[Watch on YouTube](https://www.youtube.com/@martingchao)
+
+---
+
+## Topics I Explore
+
+My content primarily focuses on:
+
+- **Business** - Strategy, startups, and building companies
+- **Technology** - Product development and tech trends
+- **Product** - Building great products and user experiences
+- **Philosophy** - Reflections on living a meaningful life
