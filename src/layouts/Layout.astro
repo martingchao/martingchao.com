@@ -3,23 +3,40 @@ const { title } = Astro.props;
 const isHomePage = Astro.url.pathname === '/';
 ---
 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{title}</title>
+    <meta name="description" content="Martin Chao - Product builder, startup founder, and content creator based in Brazil." />
+    <title>{title} | Martin Chao</title>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
-    {!isHomePage && (
-      <nav class="home-nav">
-        <a href="/" title="Home">..</a>
-      </nav>
-    )}
+    <div class="site-container">
+      {!isHomePage && (
+        <nav class="home-nav">
+          <a href="/">Home</a>
+        </nav>
+      )}
 
-    <main>
-      <slot /> <!-- Markdown content gets injected here -->
-    </main>
+      <main>
+        <slot />
+      </main>
 
+      <footer>
+        <p>&copy; {new Date().getFullYear()} Martin Chao</p>
+      </footer>
+    </div>
   </body>
 </html>
