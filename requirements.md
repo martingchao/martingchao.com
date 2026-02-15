@@ -10,6 +10,9 @@ I want the website to have some sections:
 * About me / My social media: There must be a simple page that i can describe who i am, show my CV and also my social media shows my social media links: my YouTube channel, my Instagram, Tik Tok, my x, my Twitter account
 * My personal projects: websites that i will be building
 
+# Design
+Minimalist and modern style, friendly with the user, bright colors in general. I really like Apple (from iphone) style.
+
 
 # Products that i have
 Currently I have only one info product, that is a spreadsheet that I sell to YouTube. It is a spreadsheet that connects all three financial statements. Then I made a video on YouTube where I produce this spreadsheet. I show how to make it from scratch, but some people want to buy it already done. So I put a link on the YouTube description video and sell it to these people.
@@ -17,4 +20,4 @@ Currently I have only one info product, that is a spreadsheet that I sell to You
 The link for this video is: https://www.youtube.com/watch?v=DyLPeIu3SSU
 
 # Tech Stack
-Typescript, Node.JS
+Typescript, Node.JS, Postgres SQL
