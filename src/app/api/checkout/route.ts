@@ -1,12 +1,14 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { getDb } from "@/lib/db";
+import { query } from "@/lib/db";
 
 export async function POST(request: Request) {
   const { productId } = await request.json();
 
-  const sql = getDb();
-  const rows = await sql`SELECT * FROM products WHERE id = ${productId} AND is_active = true`;
+  const rows = await query(
+    "SELECT * FROM products WHERE id = $1 AND is_active = true",
+    [productId]
+  );
   const product = rows[0];
 
   if (!product) {

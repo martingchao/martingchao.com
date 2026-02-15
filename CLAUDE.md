@@ -6,7 +6,7 @@ Personal website for Martin Chao (Brazilian). Showcases content, sells infoprodu
 ## Tech Stack
 - **Framework**: Next.js 16 (App Router) + TypeScript
 - **Styling**: Tailwind CSS v4
-- **Database**: PostgreSQL (`@neondatabase/serverless` - local dev, Vercel/Neon prod)
+- **Database**: PostgreSQL (`pg` library - local dev with pgAdmin, Vercel/Neon for prod)
 - **Payments**: Stripe Checkout (redirect flow), API version `2026-01-28.clover`
 - **Animations**: Framer Motion
 - **Auth**: Admin-only (JWT via `jose`, password-based)
@@ -50,7 +50,7 @@ src/
 │   ├── products/ (ProductCard, ProductGrid)
 │   └── ui/       (AnimatedSection, Button, Card)
 ├── lib/
-│   ├── db.ts                   # Neon serverless PostgreSQL connection
+│   ├── db.ts                   # PostgreSQL connection pool (pg)
 │   ├── stripe.ts               # Stripe client init
 │   ├── auth.ts                 # JWT sign/verify helpers
 │   └── utils.ts                # formatPrice(), slugify()

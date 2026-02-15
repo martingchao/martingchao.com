@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { stripe } from "@/lib/stripe";
-import { getDb } from "@/lib/db";
+import { query } from "@/lib/db";
 import Stripe from "stripe";
 
 export async function POST(request: Request) {
@@ -33,19 +33,21 @@ export async function POST(request: Request) {
     const productId = session.metadata?.product_id;
 
     if (productId) {
-      const sql = getDb();
-      await sql`
-        INSERT INTO orders (product_id, customer_email, stripe_session_id, stripe_payment_intent, amount_cents, currency, status)
-        VALUES (
-          ${parseInt(productId)},
-          ${session.customer_details?.email || ""},
-          ${session.id},
-          ${typeof session.payment_intent === "string" ? session.payment_intent : ""},
-          ${session.amount_total || 0},
-          ${session.currency || "brl"},
-          'completed'
-        )
-      `;
+      await query(
+        `INSERT INTO orders (product_id, customer_email, stripe_session_id, stripe_payment_intent, amount_cents, currency, status)
+         VALUES ($1, $2, $3, $4, $5, $6, $7)`,
+        [
+          parseInt(productId),
+          session.customer_details?.email || "",
+          session.id,
+          typeof session.payment_intent === "string"
+            ? session.payment_intent
+            : "",
+          session.amount_total || 0,
+          session.currency || "brl",
+          "completed",
+        ]
+      );
     }
   }
 

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDb } from "@/lib/db";
+import { query } from "@/lib/db";
 import { verifyAdminToken } from "@/lib/auth";
 
 export async function GET(
@@ -7,8 +7,9 @@ export async function GET(
   { params }: { params: Promise<{ id: string }> }
 ) {
   const { id } = await params;
-  const sql = getDb();
-  const rows = await sql`SELECT * FROM products WHERE id = ${parseInt(id)}`;
+  const rows = await query("SELECT * FROM products WHERE id = $1", [
+    parseInt(id),
+  ]);
 
   if (rows.length === 0) {
     return NextResponse.json(
@@ -44,17 +45,27 @@ export async function PUT(
     is_active,
   } = body;
 
-  const sql = getDb();
-  const rows = await sql`
-    UPDATE products
-    SET name = ${name}, slug = ${slug}, description = ${description},
-        long_description = ${long_description || null}, price_cents = ${price_cents || 0},
-        currency = ${currency || "BRL"}, image_url = ${image_url || null},
-        download_url = ${download_url || null}, stripe_price_id = ${stripe_price_id || null},
-        is_active = ${is_active ?? true}, updated_at = NOW()
-    WHERE id = ${parseInt(id)}
-    RETURNING *
-  `;
+  const rows = await query(
+    `UPDATE products
+     SET name = $1, slug = $2, description = $3, long_description = $4,
+         price_cents = $5, currency = $6, image_url = $7, download_url = $8,
+         stripe_price_id = $9, is_active = $10, updated_at = NOW()
+     WHERE id = $11
+     RETURNING *`,
+    [
+      name,
+      slug,
+      description,
+      long_description || null,
+      price_cents || 0,
+      currency || "BRL",
+      image_url || null,
+      download_url || null,
+      stripe_price_id || null,
+      is_active ?? true,
+      parseInt(id),
+    ]
+  );
 
   if (rows.length === 0) {
     return NextResponse.json(
@@ -76,8 +87,9 @@ export async function DELETE(
   }
 
   const { id } = await params;
-  const sql = getDb();
-  await sql`UPDATE products SET is_active = false WHERE id = ${parseInt(id)}`;
+  await query("UPDATE products SET is_active = false WHERE id = $1", [
+    parseInt(id),
+  ]);
 
   return NextResponse.json({ success: true });
 }
